@@ -19,6 +19,6 @@ def test_put_api_change_user_data():
     response = requests.request("PUT", f'{url} + "/" + {id}', data=new_payload)
 
     assert response.status_code == 200
-
+    assert response.json()["surname"] == 'Vimes-Ownec'
     with open(path('put_users.json')) as file:
         validate(response.json(), schema=json.loads(file.read()))

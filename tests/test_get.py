@@ -19,6 +19,6 @@ def test_get_api_get_real_user():
     response = requests.request("GET", url)
 
     assert response.status_code == 200
-
+    assert response.json()["data"]["first_name"] == "Rachel"
     with open(path('get_users.json')) as file:
         validate(response.json(), schema=json.loads(file.read()))

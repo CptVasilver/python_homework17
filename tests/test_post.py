@@ -14,7 +14,7 @@ def test_post_api_create_and_validate_user():
     response = requests.request("POST", url, data=payload)
 
     assert response.status_code == 201
-
+    assert response.json()["name"] == 'Samuel'
     with open(path('post_users.json')) as file:
         validate(response.json(), schema=json.loads(file.read()))
 
